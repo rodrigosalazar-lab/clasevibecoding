@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #f0f4f8;
+  --color-white: #ffffff;
+  --color-teal: #0ea5a0;
+  --color-teal-light: #e0f2f1;
+  --color-green: #10b981;
+  --color-green-light: #d1fae5;
+  --color-red: #ef4444;
+  --color-red-light: #fee2e2;
+  --color-gray-light: #f9fafb;
+  --color-gray: #6b7280;
+  --color-gray-dark: #374151;
+  --color-blue: #3b82f6;
+  --color-purple: #8b5cf6;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --sidebar-width: 230px;
+  --sidebar-collapsed: 64px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+}
+
+aside.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--color-white);
+  border-right: 1px solid var(--color-gray-light);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.logo {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-gray-light);
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-teal);
+}
+
+.logo p {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+}
+
+.nav ul {
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.nav li {
+  margin: 0.25rem 0;
+}
+
+.nav a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  color: var(--color-gray-dark);
+  font-weight: 500;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.nav a:hover {
+  background-color: var(--color-teal-light);
+  color: var(--color-teal);
+}
+
+.nav a.active {
+  background: linear-gradient(135deg, var(--color-teal), var(--color-blue));
+  color: var(--color-white);
+  border-radius: 0 20px 20px 0;
+  margin-right: 0.5rem;
+}
+
+.nav a.locked {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.user-badge {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-gray);
+}
+
+#btn-logout {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--color-gray-light);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+  color: var(--color-gray-dark);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+#btn-logout:hover {
+  background-color: var(--color-red-light);
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+
+main.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.section {
+  display: none;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#inicio header {
+  background: linear-gradient(135deg, var(--color-teal), var(--color-blue), var(--color-purple));
+  color: var(--color-white);
+  padding: 3rem 2rem;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+#inicio header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+
+#inicio header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+#inicio header p {
+  font-size: 1.125rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-form {
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.section-form div {
+  margin-bottom: 1rem;
+}
+
+.section-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+}
+
+.section-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--border-radius);
+  background-color: var(--color-gray-light);
+  font-family: inherit;
+  transition: var(--transition-fast);
+}
+
+.section-form input:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(14, 165, 160, 0.1);
+}
+
+.section-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--color-teal), var(--color-blue));
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.section-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+article {
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+  transition: var(--transition-normal);
+}
+
+article:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+article h3 {
+  margin-bottom: 1.5rem;
+  color: var(--color-gray-dark);
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form div {
+  margin-bottom: 1rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--border-radius);
+  background-color: var(--color-gray-light);
+  font-family: inherit;
+  transition: var(--transition-fast);
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(14, 165, 160, 0.1);
+}
+
+form button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--color-teal), var(--color-blue));
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  align-self: flex-start;
+}
+
+form button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--color-green), #059669);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-teal);
+  color: var(--color-teal);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.alert-success {
+  background-color: var(--color-green-light);
+  color: var(--color-green);
+  border: 1px solid var(--color-green);
+}
+
+.alert-error {
+  background-color: var(--color-red-light);
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: var(--color-white);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 0.5rem;
+  transition: var(--transition-normal);
+}
+
+ul li:hover {
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  aside.sidebar {
+    width: var(--sidebar-collapsed);
+  }
+
+  .logo h1,
+  .logo p,
+  .nav a,
+  .user-badge {
+    display: none;
+  }
+
+  .nav a::before {
+    content: '•';
+    font-size: 1.5rem;
+    display: block;
+    text-align: center;
+  }
+
+  main.main-content {
+    margin-left: var(--sidebar-collapsed);
+  }
+}
